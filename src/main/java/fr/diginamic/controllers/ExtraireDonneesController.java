@@ -28,7 +28,7 @@ public class ExtraireDonneesController extends HttpServlet {
 		// Stocker un utilisateur
 		session.setAttribute("utilisateur", "philippe");
 
-		req.setAttribute("utilisateur", "Cécile");
+		req.setAttribute("utilisateur2", "Cécile");
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/deuxieme");
 		dispatcher.forward(req, resp);

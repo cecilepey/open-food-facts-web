@@ -23,11 +23,11 @@ public class DeuxiemeServlet extends HttpServlet {
 		// String user = (String) utilisateur;
 
 		// Récupérer une valeur stockée
-		Object utilisateur = req.getAttribute("utilisateur");
+		Object utilisateur = req.getAttribute("utilisateur2");
 
 		String user = (String) utilisateur;
 
-		rep.getWriter().write("<h1>deuxième servlet</h1>" + "<ul>" + "<li>identifiant=" + user + "</li>" + "</ul>");
+		rep.getWriter().write("<h1>deuxième servlet</h1>" + "<ul>" + "<li>Bienvenue  " + user + "</li>" + "</ul>");
 
 	}
 
