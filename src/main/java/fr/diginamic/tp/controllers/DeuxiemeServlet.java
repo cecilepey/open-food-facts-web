@@ -1,4 +1,4 @@
-package fr.diginamic.controllers;
+package fr.diginamic.tp.controllers;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ public class DeuxiemeServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
 
-		// // Récupérer la session existante ou création d'une session
+		// Récupérer la session existante ou création d'une session
 		// HttpSession session = req.getSession(true);
 		//
 		// // Récupérer une valeur stockée

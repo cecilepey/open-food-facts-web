@@ -1,4 +1,4 @@
-package fr.diginamic.controllers;
+package fr.diginamic.tp.controllers;
 
 import java.io.IOException;
 
