@@ -45,7 +45,7 @@
 				class="col-sm-4 mx-auto border shadow p-3 mb-5 bg-white rounded"
 				method="POST" action="http://localhost:8080/open-food-facts-web/rechercher">
 				<div class="form-group">
-					<select class="custom-select mr-sm-2" id="categorie" name="selectedCategorie">
+					<select class="custom-select mr-sm-2" id="categorie" name="selectedCategorie" onchange="appelServeur()">
 
 						<%
 							List<Categorie> liste = (List<Categorie>)request.getAttribute("categorie");
@@ -78,7 +78,7 @@
 				</div>
 				<div class="form-group">
 					<input type="ext" class="form-control" id="nomProduit"
-						placeholder="nom du produit">
+						placeholder="nom du produit" name="selectedNom">
 				</div>
 				<div class="form-group">
 					<select class="custom-select mr-sm-2" id="grade" name="selectedGrade">
@@ -132,6 +132,21 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+		//fonction javascript pour récupérer les infos sélectionnées
+		function appelServeur(){
+			
+			document.location.href = "http://localhost:8080/open-food-facts-web/refreshMarques?idCat="+document.forms[0].selectedCategorie.value; 
+			
+			//refresh marques est une servlet
+			// 1 récupère idCate
+			//2 extraction des marques
+			//3 stockage des marques, categorie, idcat dans la request
+			//4 forward vers page origine
+		}
+		
+		</script>
 </body>
 </html>
 

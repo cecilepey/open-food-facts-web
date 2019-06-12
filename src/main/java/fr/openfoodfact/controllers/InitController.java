@@ -48,19 +48,24 @@ public class InitController extends HttpServlet {
 		String selectedCategorie = req.getParameter("selectedCategorie");
 		String selectedMarque = req.getParameter("selectedMarque");
 		String selectedGrade = req.getParameter("selectedGrade");
+		String selectedNom = req.getParameter("selectedNom");
+
 		if (!selectedCategorie.equals("Categorie")) {
+
 			Integer idCategorie = Integer.parseInt(selectedCategorie);
-
 			List<Produit> listeProduitCategorie = produitDao.rechercherProduitCategorie(idCategorie);
-
 			req.setAttribute("categories", listeProduitCategorie);
+
 		} else if (!selectedMarque.equals("Marque")) {
 			Integer idMarque = Integer.parseInt(selectedMarque);
 			List<Produit> listeProduitmarque = produitDao.rechercherProduitMarque(idMarque);
 			req.setAttribute("marques", listeProduitmarque);
-		} else if (!selectedGrade.equals("Grade")) {
+		} else if (!selectedGrade.equals("Grade nutritionnel")) {
 			List<Produit> listeProduitGrade = produitDao.rechercherProduitGrade(selectedGrade);
 			req.setAttribute("grades", listeProduitGrade);
+		} else if (!selectedNom.equals("")) {
+			List<Produit> listeProduitNom = produitDao.rechercherProduitNom(selectedNom);
+			req.setAttribute("noms", listeProduitNom);
 		}
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/afficherProduits.jsp");

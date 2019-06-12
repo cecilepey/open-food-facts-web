@@ -53,7 +53,7 @@
 					</thead>
 					<tbody>
 					<%
-							List<Produit> listeProduitCate = (List<Produit>)request.getAttribute("categorie");
+							List<Produit> listeProduitCate = (List<Produit>)request.getAttribute("categories");
 							if(listeProduitCate != null ){
 							for (Produit listePro : listeProduitCate) {
 						%>
@@ -84,6 +84,20 @@
 							List<Produit> listeProduitGrade = (List<Produit>)request.getAttribute("grades");
 							if(listeProduitGrade != null){
 							for (Produit listePro : listeProduitGrade) {
+						%>
+						<tr>
+						
+							<td scope="row"><%=listePro.getNom() %></th>
+							<td><%=listePro.getGrade() %></td>
+							<td><%=listePro.getEnergie100g() %></td>
+							<td><%=listePro.getGraisse100g() %></td>
+							
+						</tr>
+						<%}}%>
+													<%
+							List<Produit> listeProduitNom = (List<Produit>)request.getAttribute("noms");
+							if(listeProduitNom != null){
+							for (Produit listePro : listeProduitNom) {
 						%>
 						<tr>
 						
