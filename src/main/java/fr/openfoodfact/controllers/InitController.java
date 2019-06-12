@@ -47,6 +47,7 @@ public class InitController extends HttpServlet {
 
 		String selectedCategorie = req.getParameter("selectedCategorie");
 		String selectedMarque = req.getParameter("selectedMarque");
+		String selectedGrade = req.getParameter("selectedGrade");
 		if (!selectedCategorie.equals("Categorie")) {
 			Integer idCategorie = Integer.parseInt(selectedCategorie);
 
@@ -57,6 +58,9 @@ public class InitController extends HttpServlet {
 			Integer idMarque = Integer.parseInt(selectedMarque);
 			List<Produit> listeProduitmarque = produitDao.rechercherProduitMarque(idMarque);
 			req.setAttribute("marques", listeProduitmarque);
+		} else if (!selectedGrade.equals("Grade")) {
+			List<Produit> listeProduitGrade = produitDao.rechercherProduitGrade(selectedGrade);
+			req.setAttribute("grades", listeProduitGrade);
 		}
 
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/afficherProduits.jsp");

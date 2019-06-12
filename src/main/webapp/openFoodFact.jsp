@@ -81,9 +81,13 @@
 						placeholder="nom du produit">
 				</div>
 				<div class="form-group">
-					<select class="custom-select mr-sm-2" id="grade">
+					<select class="custom-select mr-sm-2" id="grade" name="selectedGrade">
 						<option selected>Grade nutritionnel</option>
-						<option value="1">One</option>
+						<option value="a">A</option>
+						<option value="b">B</option>
+						<option value="c">C</option>
+						<option value="d">D</option>
+						<option value="e">E</option>
 					</select>
 				</div>
 				<div class="form-group">

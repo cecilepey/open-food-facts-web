@@ -227,4 +227,51 @@ public class ProduitDao {
 			}
 		}
 	}
+
+	public List<Produit> rechercherProduitGrade(String grade) {
+		Connection conn = ConnexionManager.getInstance();
+		PreparedStatement statement = null;
+		ResultSet curseur = null;
+		List<Produit> listeProduit = new ArrayList<>();
+
+		try {
+
+			statement = conn.prepareStatement("SELECT * FROM produit where gradenutrition = ?");
+			statement.setString(1, grade);
+			curseur = statement.executeQuery();
+
+			while (curseur.next()) {
+
+				String nom = curseur.getString("nom");
+				double energie = curseur.getDouble("energie100g");
+				double graisse = curseur.getDouble("graisse100g");
+				double sucre = curseur.getDouble("sucre100g");
+				double fibre = curseur.getDouble("fibre100g");
+				double sel = curseur.getDouble("sel");
+				int idMarque = curseur.getInt("id_marque");
+				int idCategorie = curseur.getInt("id_cat");
+
+				listeProduit.add(new Produit(nom, grade, energie, graisse, sucre, fibre, sel, idMarque, idCategorie));
+
+			}
+
+			return listeProduit;
+
+		} catch (SQLException e) {
+
+			throw new TechnicalException("Une erreur sur l'id du produit", e);
+		} finally {
+			try {
+				if (statement != null) {
+					statement.close();
+				}
+				if (curseur != null) {
+					curseur.close();
+				}
+			} catch (SQLException e) {
+
+				throw new TechnicalException("La fermeture ne s'est pas faite", e);
+			}
+		}
+	}
 }
