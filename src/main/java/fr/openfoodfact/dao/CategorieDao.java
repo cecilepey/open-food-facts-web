@@ -19,6 +19,11 @@ import fr.openfoodfact.model.Categorie;
  */
 public class CategorieDao {
 
+	/**
+	 * méthode qui permet l'ajout d'une catégorie
+	 * 
+	 * @param categorie
+	 */
 	public void categorieAdd(String categorie) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -49,6 +54,12 @@ public class CategorieDao {
 		}
 	}
 
+	/**
+	 * méthode qui vérifie l'existence d'une catégorie
+	 * 
+	 * @param categorie
+	 * @return
+	 */
 	public boolean categorieExist(String categorie) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -84,6 +95,12 @@ public class CategorieDao {
 
 	}
 
+	/**
+	 * méthode qui retourne l'id de la catégorie
+	 * 
+	 * @param categorie
+	 * @return
+	 */
 	public int getIdCategorie(String categorie) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -124,6 +141,11 @@ public class CategorieDao {
 
 	}
 
+	/**
+	 * méthode qui retourne la liste des catégories
+	 * 
+	 * @return
+	 */
 	public List<Categorie> getCategorie() {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;

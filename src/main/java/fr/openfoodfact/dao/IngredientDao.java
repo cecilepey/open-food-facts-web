@@ -8,9 +8,21 @@ import java.sql.SQLException;
 import fr.openfoodfact.connexion.ConnexionManager;
 import fr.openfoodfact.exception.TechnicalException;
 
+/**
+ * Classe qui gère les méthode concernant les ingrédients
+ * 
+ * @author Cécile Peyras
+ *
+ */
 public class IngredientDao {
 
-	public void ingredientAdd(String ingredient, int id) {
+	/**
+	 * méthode qui permet l'ajout d'un ingrédient dans la base de données
+	 * 
+	 * @param ingredient
+	 * @param id
+	 */
+	public void ingredientJAdd(String ingredient, int id) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
 
@@ -43,11 +55,16 @@ public class IngredientDao {
 		}
 	}
 
+	/**
+	 * méthode qui vérifie l'existence d'un ingrédient
+	 * 
+	 * @param idProduit
+	 * @return
+	 */
 	public boolean ingredientExist(int idProduit) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
 		ResultSet curseur = null;
-		int idProd = 0;
 
 		try {
 
@@ -79,6 +96,12 @@ public class IngredientDao {
 		}
 	}
 
+	/**
+	 * méthode qui retourne id du produit
+	 * 
+	 * @param nomProduit
+	 * @return
+	 */
 	public int getIdProduit(String nomProduit) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;

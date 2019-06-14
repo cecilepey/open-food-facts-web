@@ -77,7 +77,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="ext" class="form-control" id="nomProduit"
+					<input type="text" class="form-control" id="nomProduit"
 						placeholder="nom du produit" name="selectedNom">
 				</div>
 				<div class="form-group">
@@ -135,16 +135,16 @@
 		
 		<script type="text/javascript">
 		//fonction javascript pour récupérer les infos sélectionnées
-		function appelServeur(){
+		//function appelServeur(){
 			
-			document.location.href = "http://localhost:8080/open-food-facts-web/refreshMarques?idCat="+document.forms[0].selectedCategorie.value; 
+			//document.location.href = "http://localhost:8080/open-food-facts-web/refreshMarques?idCat="+document.forms[0].selectedCategorie.value; 
 			
 			//refresh marques est une servlet
 			// 1 récupère idCate
 			//2 extraction des marques
 			//3 stockage des marques, categorie, idcat dans la request
 			//4 forward vers page origine
-		}
+		//}
 		
 		</script>
 </body>

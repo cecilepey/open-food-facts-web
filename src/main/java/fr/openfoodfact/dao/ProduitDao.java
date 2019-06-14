@@ -19,6 +19,11 @@ import fr.openfoodfact.model.Produit;
  */
 public class ProduitDao {
 
+	/**
+	 * méthode qui gère l'ajout d'un produit
+	 * 
+	 * @param produit
+	 */
 	public void produitAdd(Produit produit) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -60,6 +65,12 @@ public class ProduitDao {
 		}
 	}
 
+	/**
+	 * méthode qui vérifie si un produit existe
+	 * 
+	 * @param nomProduit
+	 * @return
+	 */
 	public boolean produitExist(String nomProduit) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -95,6 +106,12 @@ public class ProduitDao {
 
 	}
 
+	/**
+	 * méthode qui récupère l'id d'un produit
+	 * 
+	 * @param nomProduit
+	 * @return
+	 */
 	public int getIdProduit(String nomProduit) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -134,6 +151,12 @@ public class ProduitDao {
 		}
 	}
 
+	/**
+	 * méthode qui retourne une liste de produit en fonction de la catégorie
+	 * 
+	 * @param idCategorie
+	 * @return
+	 */
 	public List<Produit> rechercherProduitCategorie(Integer idCategorie) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -181,6 +204,12 @@ public class ProduitDao {
 		}
 	}
 
+	/**
+	 * méthode qui retourne une liste de produit en fonction de la marque
+	 * 
+	 * @param idMarque
+	 * @return
+	 */
 	public List<Produit> rechercherProduitMarque(Integer idMarque) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -228,6 +257,12 @@ public class ProduitDao {
 		}
 	}
 
+	/**
+	 * méthode qui retourne une liste de produit en fonction du grade
+	 * 
+	 * @param grade
+	 * @return
+	 */
 	public List<Produit> rechercherProduitGrade(String grade) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -275,6 +310,12 @@ public class ProduitDao {
 		}
 	}
 
+	/**
+	 * méthode qui retourne une liste de produit en fonction du nom saisi
+	 * 
+	 * @param nomRecherche
+	 * @return
+	 */
 	public List<Produit> rechercherProduitNom(String nomRecherche) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;

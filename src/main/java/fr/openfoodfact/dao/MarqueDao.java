@@ -19,6 +19,11 @@ import fr.openfoodfact.model.Marque;
  */
 public class MarqueDao {
 
+	/**
+	 * méthode qui permet l'ajout d'une marque
+	 * 
+	 * @param marque
+	 */
 	public void marqueAdd(String marque) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -50,6 +55,12 @@ public class MarqueDao {
 
 	}
 
+	/**
+	 * méthode qui vérifie l'existence d'une marque
+	 * 
+	 * @param marque
+	 * @return
+	 */
 	public boolean marqueExist(String marque) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -86,6 +97,12 @@ public class MarqueDao {
 
 	}
 
+	/**
+	 * méthode qui retourne l'id d'une marque
+	 * 
+	 * @param marque
+	 * @return
+	 */
 	public int getIdMarque(String marque) {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -127,6 +144,11 @@ public class MarqueDao {
 
 	}
 
+	/**
+	 * méthode qui retourne la liste de marque
+	 * 
+	 * @return
+	 */
 	public List<Marque> getMarque() {
 		Connection conn = ConnexionManager.getInstance();
 		PreparedStatement statement = null;
@@ -136,6 +158,51 @@ public class MarqueDao {
 		try {
 
 			statement = conn.prepareStatement("SELECT * FROM marque");
+			curseur = statement.executeQuery();
+			while (curseur.next()) {
+				int id = curseur.getInt("id");
+				String nom = curseur.getString("nom");
+				listeMarque.add(new Marque(id, nom));
+
+			}
+
+			return listeMarque;
+
+		} catch (SQLException e) {
+			throw new TechnicalException("Une erreur sur l'existence de la catégorie", e);
+		} finally {
+			try {
+				if (statement != null) {
+					statement.close();
+				}
+				if (curseur != null) {
+					curseur.close();
+				}
+			} catch (SQLException e) {
+
+				throw new TechnicalException("La fermeture ne s'est pas faite", e);
+			}
+		}
+
+	}
+
+	/**
+	 * méthode qui retourne une liste de marque en fonction d'une catégorie
+	 * 
+	 * @param idCategorie
+	 * @return
+	 */
+	public List<Marque> getMarqueByCategorie(Integer idCategorie) {
+		Connection conn = ConnexionManager.getInstance();
+		PreparedStatement statement = null;
+		ResultSet curseur = null;
+
+		ArrayList<Marque> listeMarque = new ArrayList<>();
+		try {
+
+			statement = conn.prepareStatement(
+					"SELECT distinct (mrq.id), mrq.nom  FROM PRODUIT prd, MARQUE mrq WHERE id_marque = mrq.id and id_cat = ?");
+			statement.setLong(1, idCategorie);
 			curseur = statement.executeQuery();
 			while (curseur.next()) {
 				int id = curseur.getInt("id");
